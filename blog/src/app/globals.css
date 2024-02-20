@@ -7,7 +7,10 @@
     @apply text-5xl;
   }
   h2 {
-    @apply text-2xl;
+    @apply text-xl;
+  }
+  span n{
+    @apply text-lg;
   }
 }
 

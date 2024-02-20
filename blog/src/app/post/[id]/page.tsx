@@ -1,14 +1,17 @@
-const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-export function generateStaticParams() {
-  return items.map((post) => ({
-    id: String(post),
+import { getData } from "@/service/fetch";
+
+export async function generateStaticParams() {
+  const items: Array<{number: Number; title: String; body: String}> = await getData();
+  return items.map((item) => ({
+    id: item.number.toString(),
   }));
 }
 
-const Post = ({ params }: { params: { id: string } }) => {
+const Post = ({ params }: { params: { id: String } }) => {
+  // const items: Array<{number: Number; title: String; body: String}> = await getData();
   return(
     <div>
-      <p>id is {params.id}</p>
+
     </div>
   );
 }
