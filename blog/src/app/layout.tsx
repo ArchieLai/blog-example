@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { DataProvider } from "@/component/dataContext";
 import Nav from "@/component/nav";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <Nav />
-            <div className="mt-[100px]">{children}</div>
+            <DataProvider><div className="mt-[100px]">{children}</div></DataProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

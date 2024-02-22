@@ -5,6 +5,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import GridViewIcon from '@mui/icons-material/GridView';
 import PersonIcon from '@mui/icons-material/Person';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const  Nav = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const  Nav = () => {
 
   return (
     <div className='fixed top-0	w-[100vw] h-[80px] bg-[#494953] text-white flex justify-between items-center px-5 shadow shadow-black z-10'>
-      <span className='text-5xl font-serif font-light'>部落格</span>
+      <Link href='/'><span className='text-4xl font-serif font-light'>部落格</span></Link>
       <BottomNavigation className='bg-transparent'>
         <BottomNavigationAction 
           icon=

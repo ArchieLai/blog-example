@@ -1,14 +1,21 @@
+'use client'
 import Card from "@/component/card";
-import { getData } from "@/service/fetch";
+import { useContext } from "react";
+import { DataContext } from '../component/dataContext';
+import { DataContextType } from "@/types/data";
 
-const Home = async () => {
-  const items: Array<{number: Number; title: String; body: String}> = await getData();
+const Home = () => {
+  const {data, page, setPage}: DataContextType = useContext(DataContext);
   return (
     <main className="flex flex-col items-center gap-[20px] mt-10">
-      {items.map((item, index) => (
-        <Card key={index} title={item.title} index={item.number} />
-      ))}
+      {data.map((item) => {
+        return(
+          <Card key={item.id.toString()} title={item.title} index={item.id} />
+        );
+      })}
     </main>
   );
 }
 export default Home;
+
+// TODO: infinite scroll
