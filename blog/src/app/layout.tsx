@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-Hant">
-      <body>
+      <body className="overscroll-none">
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <Nav />
             <DataProvider><div className="mt-[100px]">{children}</div></DataProvider>

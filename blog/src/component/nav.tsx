@@ -1,18 +1,12 @@
-'use client';
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import GridViewIcon from '@mui/icons-material/GridView';
 import PersonIcon from '@mui/icons-material/Person';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const  Nav = () => {
-  const router = useRouter();
-  const handleClick = (e: MouseEvent, route: string) => {
-    e.preventDefault();
-    router.push(route);
-  };
+  const url = `${process.env.AuthUrl}?client_id=${process.env.ClientID}&scope=${process.env.SCOPE}`;
 
   return (
     <div className='fixed top-0	w-[100vw] h-[80px] bg-[#494953] text-white flex justify-between items-center px-5 shadow shadow-black z-10'>
@@ -20,17 +14,19 @@ const  Nav = () => {
       <BottomNavigation className='bg-transparent'>
         <BottomNavigationAction 
           icon=
-            {<div className='flex gap-2'>
-              <GridViewIcon /><span>列表</span>
-            </div>} 
-          onClick={(e: MouseEvent) => handleClick(e, "/")} 
+            {<Link href='/'>
+              <div className='flex gap-2'>
+                <GridViewIcon /><span>列表</span>
+              </div>
+            </Link>} 
         />
         <BottomNavigationAction 
           icon=
-            {<div className='flex gap-2'>
-              <PersonIcon /><span>登入</span>
-            </div>} 
-          onClick={(e: MouseEvent) => handleClick(e, "/")}
+            {<Link href={url}>
+                <div className='flex gap-2'>
+                  <PersonIcon /><span>登入</span>
+                </div>
+              </Link>}
         />
       </BottomNavigation>
     </div>
