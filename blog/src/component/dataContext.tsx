@@ -7,14 +7,14 @@ export const DataContext = createContext<DataContextType>({  //default values
   data: [],
   page: 1,
   setPage: ()=>{},
-  token: "",
-  setToken: ()=>{}
+  code: "",
+  setCode: ()=>{}
 })
 
 export const DataProvider = ({children}: {children: React.ReactNode}) => {
   const [data, setData] = useState<DataType[]>([]); 
   const [page, setPage] = useState(1);
-  const [token, setToken] = useState("");
+  const [code, setCode] = useState("");
   const pageSize = 10;
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
   }, [page])
 
   return (
-    <DataContext.Provider value={{data, page, setPage, token, setToken}}>
+    <DataContext.Provider value={{data, page, setPage, code, setCode}}>
       {children} 
     </DataContext.Provider>
   )
