@@ -1,17 +1,20 @@
 'use client'
 import { createContext, useState, useEffect } from 'react';
-import { getData } from '@/service/fetch';
+import { getData } from '@/service/getData';
 import { DataType, DataContextType } from '@/types/data';
 
 export const DataContext = createContext<DataContextType>({  //default values
   data: [],
   page: 1,
   setPage: ()=>{},
+  token: "",
+  setToken: ()=>{}
 })
 
 export const DataProvider = ({children}: {children: React.ReactNode}) => {
   const [data, setData] = useState<DataType[]>([]); 
   const [page, setPage] = useState(1);
+  const [token, setToken] = useState("");
   const pageSize = 10;
 
   useEffect(() => {
@@ -25,7 +28,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
   }, [page])
 
   return (
-    <DataContext.Provider value={{data, page, setPage}}>
+    <DataContext.Provider value={{data, page, setPage, token, setToken}}>
       {children} 
     </DataContext.Provider>
   )

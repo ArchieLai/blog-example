@@ -1,6 +1,6 @@
 'use server'
 export async function getData(page: Number, pageSize: Number) {
-  const url = `${process.env.Fetch_BaseURL}/${process.env.USER}/${process.env.REPO}/issues?per_page=${pageSize}&page=${page}`;
+  const url = `${process.env.BaseUrl}/${process.env.USER}/${process.env.REPO}/issues?per_page=${pageSize}&page=${page}`;
   try {
     const res = await fetch(url, {
       method: 'GET', next: { revalidate: 1800 }
