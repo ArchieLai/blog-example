@@ -4,19 +4,20 @@ import { DataContext } from '@/component/dataContext';
 import { DataContextType } from "@/types/data";
 import ReactMarkdown from 'react-markdown';
 import { useRouter } from 'next/navigation';
+import Edit from "@/component/edit";
+
 // import { postSecret } from "@/service/auth"; 
 
 const Post = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
-  const [isToken, setIsToken] = useState(false);
-  const [token, setToken] = useState("");
   const {data, code} = useContext<DataContextType>(DataContext);
   const record = data.filter(r => r.id === Number(params.id))[0];
-
+  const [isLogin, setIsLogin] = useState(false);
+  
   // TODO: change to postIssue
   // useEffect(() => {
   //     async function getToken() {
-  //       const myToken = await postSecret(code);
+  //       const myToken = await getToken(code);
   //       setToken(myToken);
   //       setIsToken(true);
   //     }
@@ -24,14 +25,19 @@ const Post = ({ params }: { params: { id: string } }) => {
   //       getToken();
   //     }
   // }, [code]);
-
+  useEffect(() => {
+    if (code != ""){
+      setIsLogin(true);
+    }
+  }, [code]);
+  
   if (!record){
     router.push('/not-found');
     return null;
   }
   return(
     <div className="m-10">
-      {/* {isToken && <p>{token}</p>} */}
+      {isLogin && <Edit title={record.title} body={record.body}/>}
       <h2>{record.title}</h2>
       <ReactMarkdown className="prose lg:prose-xl max-w-none">{record && (record.body).toString()}</ReactMarkdown>
     </div>

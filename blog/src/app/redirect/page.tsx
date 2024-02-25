@@ -1,4 +1,4 @@
-import { postSecret } from "@/service/auth";
+import { getToken } from "@/service/getToken";
 import { redirect } from 'next/navigation'
 
 const Redirect = async ({searchParams={code: undefined},}: {
@@ -7,7 +7,7 @@ const Redirect = async ({searchParams={code: undefined},}: {
   const code = searchParams.code;
   if (code !== undefined ) {
     try {
-      await postSecret(code);
+      await getToken(code);
     } catch (error) {
       console.log('redirect error:', error);
     }
