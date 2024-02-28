@@ -2,6 +2,7 @@ export interface DataType {
   id: Number; 
   title: string; 
   body: string
+  created_at: string;
 }
 
 export interface DataContextType {

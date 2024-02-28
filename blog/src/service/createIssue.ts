@@ -13,7 +13,6 @@ export default async function createIssue(code: string, formData: FormData) {
         Accept: 'application/vnd.github.v3+json',
         contentType: 'application/json',
       },
-      next: { tags: ['createPost'] },
       body: JSON.stringify({title: formData.get('title'), body: formData.get('body')}),
     });
     const data = await res.json();

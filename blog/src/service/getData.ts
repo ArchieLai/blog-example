@@ -6,7 +6,7 @@ export async function getData(page: Number, pageSize: Number) {
       method: 'GET', next: { revalidate: 1800 }
     });
     const data = await res.json();
-    return data.map(({ number, title, body }: {number: Number; title: string; body: string}) => ({ id: number, title, body }));
+    return data.map(({ number, title, body, created_at }: {number: Number; title: string; body: string, created_at: string}) => ({ id: number, title, body, created_at }));
   } catch (error) {
     console.log('error', error);
     return undefined;

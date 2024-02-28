@@ -6,7 +6,7 @@ import { DataContext } from '@/component/dataContext';
 import { DataContextType } from "@/types/data";
 
 const Create = ({code}: {code: string}) => {
-  const {data, setData} = useContext<DataContextType>(DataContext);
+  const {setData} = useContext<DataContextType>(DataContext);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
@@ -22,7 +22,7 @@ const Create = ({code}: {code: string}) => {
 
     //update context
     if (res) {
-      const newData = {id: res.number, title: res.title, body: res.body};
+      const newData = {id: res.number, title: res.title, body: res.body, created_at: res.created_at};
       setData(prevData => {
         const updated = [...prevData, newData];
         return updated.sort((a, b) => b.id - a.id);
