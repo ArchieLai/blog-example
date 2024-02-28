@@ -6,6 +6,7 @@ export interface DataType {
 
 export interface DataContextType {
   data: Array<DataType>;
+  setData: React.Dispatch<React.SetStateAction<DataType[]>>;
   page: Number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   code: string;

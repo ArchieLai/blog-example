@@ -5,6 +5,7 @@ import { DataType, DataContextType } from '@/types/data';
 
 export const DataContext = createContext<DataContextType>({  //default values
   data: [],
+  setData: ()=>{},
   page: 1,
   setPage: ()=>{},
   code: "",
@@ -28,7 +29,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
   }, [page])
 
   return (
-    <DataContext.Provider value={{data, page, setPage, code, setCode}}>
+    <DataContext.Provider value={{data, setData, page, setPage, code, setCode}}>
       {children} 
     </DataContext.Provider>
   )

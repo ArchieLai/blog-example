@@ -8,6 +8,7 @@ import Create from "@/component/create";
 const Home = () => {
   const {data, page, setPage, code, setCode}: DataContextType = useContext(DataContext);
   const [isLogin, setIsLogin] = useState(false);
+
   useEffect(() => {
     const url = new URL(window.location.href);
     const myCode = url.searchParams.get('code');
@@ -15,7 +16,7 @@ const Home = () => {
       setCode(myCode);
       setIsLogin(true);
     }
-  }, [code]);
+  }, [code, data]);
 
   return (
     <main className="flex flex-col items-center gap-[20px] mt-10">

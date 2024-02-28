@@ -36,10 +36,12 @@ const Post = ({ params }: { params: { id: string } }) => {
     return null;
   }
   return(
-    <div className="m-10">
+    <div className="m-10 flex flex-col gap-5">
       {isLogin && <Edit title={record.title} body={record.body}/>}
       <h2>{record.title}</h2>
-      <ReactMarkdown className="prose lg:prose-xl max-w-none">{record && (record.body).toString()}</ReactMarkdown>
+      <div className="bg-white p-5 rounded-xl">
+        <ReactMarkdown className="prose lg:prose-xl max-w-none">{record && (record.body).toString()}</ReactMarkdown>
+      </div>
     </div>
   );
 }

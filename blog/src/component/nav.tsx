@@ -8,8 +8,8 @@ import Link from 'next/link';
 const  Nav = () => {
   const url = `${process.env.AuthUrl}/?client_id=${process.env.ClientId}&scope=${process.env.SCOPE}&redirect_uri=${process.env.RedirectUri}`;
   return (
-    <div className='fixed top-0	w-[100vw] h-[80px] bg-[#494953] text-white flex justify-between items-center px-5 shadow shadow-black z-10'>
-      <Link href='/'><span className='text-4xl font-serif font-light'>部落格</span></Link>
+    <div className='fixed top-0	w-[100vw] h-[80px] bg-[#EBE4D1] flex justify-between items-center px-5 shadow shadow-neutral-500 z-10'>
+      <Link href='/'><span className='text-4xl font-serif'>部落格</span></Link>
       <BottomNavigation className='bg-transparent'>
         <BottomNavigationAction 
           icon=
