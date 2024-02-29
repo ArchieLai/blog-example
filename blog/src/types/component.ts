@@ -7,5 +7,5 @@ export interface CardProps {
 export interface EditProps {
   title: string;
   body: string;
-  created_at: string;
+  id: string;
 }
