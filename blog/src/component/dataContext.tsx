@@ -9,27 +9,36 @@ export const DataContext = createContext<DataContextType>({  //default values
   page: 1,
   setPage: ()=>{},
   code: "",
-  setCode: ()=>{}
+  setCode: ()=>{},
+  isLast: false,
+  setIsLast: ()=>{},
 })
 
 export const DataProvider = ({children}: {children: React.ReactNode}) => {
   const [data, setData] = useState<DataType[]>([]); 
   const [page, setPage] = useState(1);
   const [code, setCode] = useState("");
+  const [isLast, setIsLast] = useState(false);
   const pageSize = 10;
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getData(page, pageSize) 
-      const dataSet = new Set(data);
-      result.forEach((item: DataType)=> dataSet.add(item))
-      setData([...dataSet]);
+      const result = await getData(page, pageSize);
+      if (result.length > 0) {
+        console.log('fetching page', page);
+        setData((prevData) => {
+          return [...prevData, ...result];
+        });
+      }
+      else {
+        setIsLast(true);
+      }
     }
-    fetchData()
-  }, [page])
+    fetchData();
+  }, [page]);
 
   return (
-    <DataContext.Provider value={{data, setData, page, setPage, code, setCode}}>
+    <DataContext.Provider value={{data, setData, page, setPage, code, setCode, isLast, setIsLast}}>
       {children} 
     </DataContext.Provider>
   )

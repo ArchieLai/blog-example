@@ -1,6 +1,5 @@
 'use server';
 import { getToken } from "./getToken";
-import { revalidatePath } from 'next/cache';
 
 export default async function createIssue(code: string, formData: FormData) {
   const url = `${process.env.BaseUrl}/${process.env.USER}/${process.env.REPO}/issues`;
@@ -12,14 +11,11 @@ export default async function createIssue(code: string, formData: FormData) {
         Authorization: `Bearer ${token}`,
         Accept: 'application/vnd.github.v3+json',
         contentType: 'application/json',
+        'X-GitHub-Api-Version': '2022-11-28',
       },
       body: JSON.stringify({title: formData.get('title'), body: formData.get('body')}),
     });
     const data = await res.json();
-
-    // revalidate cache
-    revalidatePath('/');
-
     return data;
   } catch (error) {
     console.log('createIssue error', error);

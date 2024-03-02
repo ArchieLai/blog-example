@@ -1,13 +1,11 @@
 'use client'
-import { use, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from '@/component/dataContext';
 import { DataContextType, DataType } from "@/types/data";
 import ReactMarkdown from 'react-markdown';
 import { useRouter } from 'next/navigation';
 import Edit from "@/component/edit";
 import Delete from "@/component/delete";
-
-// import { postSecret } from "@/service/auth"; 
 
 const Post = ({ params }: { params: { id: string } }) => {
   const router = useRouter();

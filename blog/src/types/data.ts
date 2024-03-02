@@ -12,4 +12,6 @@ export interface DataContextType {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   code: string;
   setCode: React.Dispatch<React.SetStateAction<string>>;
+  isLast: boolean;
+  setIsLast: React.Dispatch<React.SetStateAction<boolean>>;
 }

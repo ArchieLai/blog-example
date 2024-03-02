@@ -4,13 +4,14 @@ export async function getToken(code: string ) {
   try {
     const res = await fetch(url, { 
       method: 'POST', 
-      headers: { 'Accept': 'application/json' }, 
+      headers: { 'Accept': 'application/json' },       
       next: { revalidate: 7200 }
     });
     const data = await res.json();
+
     return data.access_token;
   } catch (error) {
-    console.log('postecret error', error);
+    console.log('getToken error', error);
     return undefined;
   }
 }

@@ -13,6 +13,7 @@ const Edit = (props: EditProps) => {
     body: props?.body,
   });
   const [open, setOpen] = useState(false);
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -25,11 +26,10 @@ const Edit = (props: EditProps) => {
     const res = await updateIssue(code, formData, props.id);
 
     //update context
-    if (res) {
+    if (res.number !== undefined) {
       const prevData = data.filter((record) => { return record.id !== Number(res.number)});
       setData([...prevData, {id: res.number, title: res.title, body: res.body, created_at: res.created_at}]);
     }
-    setFormData({ title: '', body: '' });
   }
 
   return (

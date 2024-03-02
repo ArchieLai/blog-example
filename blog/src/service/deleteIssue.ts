@@ -12,6 +12,7 @@ export default async function deleteIssue(code: string, id: string) {
         Authorization: `Bearer ${token}`,
         Accept: 'application/vnd.github.v3+json',
         contentType: 'application/json',
+        'X-GitHub-Api-Version': '2022-11-28',
       },
       body: JSON.stringify({state: 'closed'}),
     });

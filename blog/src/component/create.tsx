@@ -24,9 +24,9 @@ const Create = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const res = await createIssue(code, formData);
-
+    
     //update context
-    if (res) {
+    if (res.number !== undefined) {
       const newData = {id: res.number, title: res.title, body: res.body, created_at: res.created_at};
       setData(prevData => {return[...prevData, newData]});
     }

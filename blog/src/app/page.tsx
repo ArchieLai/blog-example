@@ -1,13 +1,14 @@
-'use client'
+'use client';
 import Card from "@/component/card";
-import { use, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { DataContext } from '../component/dataContext';
 import { DataContextType } from "@/types/data";
 import Create from "@/component/create";
 
 const Home = () => {
-  const {data, page, setPage, code, setCode}: DataContextType = useContext(DataContext);
+  const {data, setPage, code, setCode, isLast}: DataContextType = useContext(DataContext);
   const [sortedData, setSortedData] = useState(data);
+  const reference = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -16,12 +17,32 @@ const Home = () => {
       setCode(myCode);
     }
   }, [code]);
+
   useEffect(() => {
     setSortedData(data.slice().sort((a, b) => Number(b.id )- Number(a.id)));
   }, [data]);
 
+  // infinite scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isLast) {
+        setPage((prevPage) => prevPage + 1);
+      }
+    }, { threshold: 1 });
+
+    if (reference.current && !isLast) {
+      observer.observe(reference.current);
+    }
+    return () => {
+      if (reference.current) {
+        observer.unobserve(reference.current);
+      }
+    }
+  }, [reference, isLast]);
+  
+
   return (
-    <main className="flex flex-col items-center gap-[20px] mt-10">
+    <main className="flex flex-col items-center gap-[20px] mt-10 mb-10">
       {code && <Create />}
       {sortedData.map((item) => {
         if (item.id != undefined){
@@ -30,9 +51,10 @@ const Home = () => {
           );
           }
       })}
+      <div ref={reference}></div> 
     </main>
   );
 }
 export default Home;
 
-// TODO: infinite scroll
+// TODO: add loading spinner at the bottom of the page
