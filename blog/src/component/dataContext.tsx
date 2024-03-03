@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { createContext, useState, useEffect } from 'react';
 import { getData } from '@/service/getData';
 import { DataType, DataContextType } from '@/types/data';
