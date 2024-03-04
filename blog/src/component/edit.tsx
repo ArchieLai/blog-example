@@ -34,7 +34,7 @@ const Edit = (props: EditProps) => {
 
   return (
     <div>
-      <button onClick={handleOpen}>編輯</button>
+      <button onClick={handleOpen} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>編輯</button>
         <Backdrop
           open={open}
         >

@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  h1 {
-    @apply text-4xl;
-  }
-  h2 {
-    @apply text-xl;
-  }
-  span n{
-    @apply text-lg;
-  }
-}
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 233, 233, 233;

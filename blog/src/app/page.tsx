@@ -19,7 +19,7 @@ const Home = () => {
   }, [code]);
 
   useEffect(() => {
-    setSortedData(data.slice().sort((a, b) => Number(b.id )- Number(a.id)));
+    setSortedData(data.slice().sort((a, b) => Number(b.id)- Number(a.id)));
   }, [data]);
 
   // infinite scroll

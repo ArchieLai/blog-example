@@ -16,7 +16,7 @@ const Delete = (props: {id: string}) => {
   }
 
   return (
-    <button onClick={handleClick}>刪除</button>
+    <button onClick={handleClick} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg mt-10'>刪除</button>
   );
 }
 export default Delete;

@@ -9,21 +9,21 @@ const  Nav = () => {
   const url = `${process.env.AuthUrl}/?client_id=${process.env.ClientId}&scope=${process.env.SCOPE}&redirect_uri=${process.env.RedirectUri}`;
   return (
     <div className='fixed top-0	w-[100vw] h-[80px] bg-[#EBE4D1] flex justify-between items-center px-5 shadow shadow-neutral-500 z-10'>
-      <Link href='/'><span className='text-4xl font-serif'>部落格</span></Link>
+      <Link href='/'><h1 className='text-3xl lg:text-4xl font-serif'>部落格</h1></Link>
       <BottomNavigation className='bg-transparent'>
         <BottomNavigationAction 
           icon=
             {<Link href='/'>
-              <div className='flex gap-2'>
-                <GridViewIcon /><span>列表</span>
+              <div className='flex gap-1 lg:gap-2 items-center'>
+                <GridViewIcon /><span className='text-base lg:text-lg'>列表</span>
               </div>
             </Link>} 
         />
         <BottomNavigationAction 
           icon=
             {<Link href={url}>
-                <div className='flex gap-2'>
-                  <PersonIcon /><span>登入</span>
+                <div className='flex gap-1 lg:gap-2 items-center'>
+                  <PersonIcon /><span className='text-base lg:text-lg'>登入</span>
                 </div>
               </Link>}
         />
