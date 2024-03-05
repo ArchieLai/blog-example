@@ -39,7 +39,6 @@ const Post = ({ params }: { params: { id: string } }) => {
           {isLogin && <Edit title={record?.title} body={record?.body} id={params?.id}/>}
         </div>
       <div className="bg-white p-5 rounded-xl">
-        
         <ReactMarkdown className="prose lg:prose-xl max-w-none">{record?.body && (record?.body).toString()}</ReactMarkdown>
       </div>
       <div className="text-center">

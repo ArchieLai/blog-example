@@ -36,11 +36,9 @@ const Create = () => {
   
   return (
     <div>
-      <button onClick={handleOpen} className='w-[100px] h-[50px] bg-neutral-600 text-white rounded-md text-lg'>新增</button>
-      <Backdrop
-        open={open}
-      >
-        <div className='bg-white w-[90vw] lg:w-[1000px] p-10 rounded-lg'>
+      <button onClick={handleOpen} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>新增</button>
+      <Backdrop open={open}>
+        <div className='bg-white w-[90vw] lg:w-[1000px] p-5 rounded-lg'>
           <div className='text-right'><button onClick={handleClose}><CloseIcon /></button></div>
           <form onSubmit={handleSubmit} method="post" className='bg-white flex flex-col gap-3'>
             <label className='text-md lg:text-xl'>新增標題</label>
@@ -60,7 +58,7 @@ const Create = () => {
               className='h-[250px] border-2 border-neutral-400 rounded-sm p-2'
             />
             <div className='text-center'>
-              <button type="submit" onClick={handleClose} className='w-[100px] h-[50px] bg-neutral-600 text-white rounded-md text-lg'>新增</button>
+              <button type="submit" onClick={handleClose} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>新增</button>
             </div>
           </form>
         </div>

@@ -5,6 +5,7 @@ import { EditProps } from '@/types/component';
 import updateIssue from '@/service/updateIssue';
 import { DataContext } from '@/component/dataContext';
 import { DataContextType } from "@/types/data";
+import CloseIcon from '@mui/icons-material/Close';
 
 const Edit = (props: EditProps) => {
   const {code, setData, data} = useContext<DataContextType>(DataContext);
@@ -35,31 +36,32 @@ const Edit = (props: EditProps) => {
   return (
     <div>
       <button onClick={handleOpen} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>編輯</button>
-        <Backdrop
-          open={open}
-        >
-          <div className='bg-white w-[800px]'>
-            <button onClick={handleClose}>關閉</button>
-            <form onSubmit={handleSubmit} method="post" className='bg-white flex flex-col'>
-              <label>Input title</label>
-              <input 
-                type='text' 
-                name='title'
-                required
-                value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              />
-              <label>Input content</label>
-              <textarea 
-                name='body' 
-                value={formData.body}
-                onChange={(e) => setFormData({ ...formData, body: e.target.value })}
-                className='h-[300px]' 
-              />
-              <button type="submit" onClick={handleClose}>更新</button>
-            </form>
-          </div>
-        </Backdrop>
+      <Backdrop open={open}>
+        <div className='bg-white w-[90vw] lg:w-[1000px] p-5 rounded-lg'>
+          <div className='text-right'><button onClick={handleClose}><CloseIcon /></button></div>
+          <form onSubmit={handleSubmit} method="post" className='bg-white flex flex-col gap-3'>
+            <label className='text-md lg:text-xl'>編輯標題</label>
+            <input 
+              type='text' 
+              name='title'
+              required
+              value={formData.title}
+              onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+              className='border-2 border-neutral-400 rounded-sm p-2'
+            />
+            <label className='text-md lg:text-xl'>編輯內容</label>
+            <textarea 
+              name='body' 
+              value={formData.body}
+              onChange={(e) => setFormData({ ...formData, body: e.target.value })}
+              className='h-[250px] border-2 border-neutral-400 rounded-sm p-2' 
+            />
+            <div className='text-center'>
+              <button type="submit" onClick={handleClose} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>更新</button>
+            </div>              
+          </form>
+        </div>
+      </Backdrop>
     </div>
   );
 }
