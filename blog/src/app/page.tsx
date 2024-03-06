@@ -4,6 +4,7 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { DataContext } from '../component/dataContext';
 import { DataContextType } from "@/types/data";
 import Edit from "@/component/edit";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Home = () => {
   const {data, setPage, code, setCode, isLast}: DataContextType = useContext(DataContext);
@@ -51,10 +52,10 @@ const Home = () => {
           );
           }
       })}
-      <div ref={reference}></div> 
+      <div ref={reference} className="w-full text-center">
+        {!isLast && <CircularProgress />}
+      </div> 
     </main>
   );
 }
 export default Home;
-
-// TODO: add loading spinner at the bottom of the page
