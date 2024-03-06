@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: "/blog-example",
-  output: "export",
+  output: "standalone",
   reactStrictMode: true,
   logging: {
     fetches: {
