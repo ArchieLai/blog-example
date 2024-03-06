@@ -1,6 +1,38 @@
 # Introduction
 [Project requirement](https://drive.google.com/file/d/1x5l_hC5c26MauhTpACwGaa2nBUDo5uad/view)
 
+## Getting Started
+### 1. Installations
+```bash
+npm install
+```
+### 2. Run the development server
+```bash
+cd blog
+
+npm run dev
+# or
+next dev
+# or
+npx next dev
+```
+### 3. Build for production
+```bash
+npm run build 
+# or
+next build
+# or
+npx next build
+```
+### 4. Run production build
+```bash
+npm start
+# or
+next start
+# or
+npx next start
+```
+
 ## System Design and Implementation 
 [Project note](https://hackmd.io/@archielai/B1U7-pl2p)
 
@@ -45,36 +77,3 @@
 
 ### Caching Strategies
 * [Project note on caching](https://hackmd.io/FvY8WJ3MQlm_ow0QWvvX2Q?view#3%E8%B3%87%E6%96%99%E5%8F%96%E5%BE%97%E5%8F%8A%E5%BF%AB%E5%8F%96)
-
-
-## Getting Started
-### 1. Installations
-```bash
-npm install
-```
-### 2. Run the development server
-```bash
-cd blog
-
-npm run dev
-# or
-next dev
-# or
-npx next dev
-```
-### 3. Build for production
-```bash
-npm run build 
-# or
-next build
-# or
-npx next build
-```
-### 4. Run production build
-```bash
-npm start
-# or
-next start
-# or
-npx next start
-```
