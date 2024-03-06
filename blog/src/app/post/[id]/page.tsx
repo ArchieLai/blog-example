@@ -36,7 +36,7 @@ const Post = ({ params }: { params: { id: string } }) => {
       
       <div className="flex flex-row items-center justify-between">
         <span className="text-base lg:text-lg">{record?.created_at.split('T')[0]}</span>
-          {isLogin && <Edit title={record?.title} body={record?.body} id={params?.id}/>}
+          {isLogin && <Edit title={record?.title} body={record?.body} id={params?.id} isCreate={false}/>}
         </div>
       <div className="bg-white p-5 rounded-xl">
         <ReactMarkdown className="prose lg:prose-xl max-w-none">{record?.body && (record?.body).toString()}</ReactMarkdown>

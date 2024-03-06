@@ -8,4 +8,5 @@ export interface EditProps {
   title: string;
   body: string;
   id: string;
+  isCreate: boolean;
 }

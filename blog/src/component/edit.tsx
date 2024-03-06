@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import { EditProps } from '@/types/component';
 import updateIssue from '@/service/updateIssue';
+import createIssue from '@/service/createIssue';
 import { DataContext } from '@/component/dataContext';
 import { DataContextType } from "@/types/data";
 import CloseIcon from '@mui/icons-material/Close';
@@ -23,7 +24,7 @@ const Edit = (props: EditProps) => {
   const handleOpen = () => {
     setOpen(true);
   };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!valBody && !valTitle) {
       const formData = new FormData(e.currentTarget);
@@ -36,6 +37,20 @@ const Edit = (props: EditProps) => {
     }
   }
 
+  const handleCreateSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!valBody && !valTitle) {
+      const newFormData = new FormData(e.currentTarget);
+      const res = await createIssue(code, newFormData);
+      //update context
+      if (res.number !== undefined) {
+        const newData = {id: res.number, title: res.title, body: res.body, created_at: res.created_at};
+        setData(prevData => {return[...prevData, newData]});
+      }
+      setFormData({ title: '', body: '' }); //clear form
+    }
+  }
+  
   // validation
   useEffect(() => {
     const validation = () => {
@@ -55,12 +70,14 @@ const Edit = (props: EditProps) => {
 
   return (
     <div>
-      <button onClick={handleOpen} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>編輯</button>
+      <button onClick={handleOpen} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>
+        {props.isCreate ? "新增" : "編輯"}
+      </button>
       <Backdrop open={open}>
         <div className='bg-white w-[90vw] lg:w-[1000px] p-5 rounded-lg'>
           <div className='text-right'><button onClick={handleClose}><CloseIcon /></button></div>
-          <form onSubmit={handleSubmit} method="post" className='bg-white flex flex-col gap-2'>
-            <label className='text-md lg:text-xl'>編輯標題</label>
+          <form onSubmit={props.isCreate ? handleCreateSubmit : handleEditSubmit} method="post" className='bg-white flex flex-col gap-2'>
+            <label className='text-md lg:text-xl'>{props.isCreate ? "新增標題" : "編輯標題"}</label>
             <input 
               type='text' 
               name='title'
@@ -70,7 +87,7 @@ const Edit = (props: EditProps) => {
               className='border-2 border-neutral-400 rounded-sm p-2'
             />
             {valTitle && <p className='text-red-500 text-center'>標題不得為空</p>}
-            <label className='text-md lg:text-xl'>編輯內容</label>
+            <label className='text-md lg:text-xl'>{props.isCreate ? "新增內容" : "編輯內容"}</label>
             <textarea 
               name='body' 
               value={formData.body}
@@ -79,7 +96,9 @@ const Edit = (props: EditProps) => {
             />
             {valBody && <p className='text-red-500 text-center'>內容不得少於30字</p>}
             <div className='text-center'>
-              <button type="submit" onClick={handleClose} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>更新</button>
+              <button type="submit" onClick={handleClose} className='w-[60px] lg:w-[100px] h-[30px] lg:h-[50px] bg-neutral-600 text-white rounded-md text-sm lg:text-lg'>
+                {props.isCreate ? "新增" : "更新"}
+              </button>
             </div>              
           </form>
         </div>

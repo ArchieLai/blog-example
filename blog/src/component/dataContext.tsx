@@ -27,7 +27,10 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
       if (result.length > 0) {
         console.log('fetching page', page);
         setData((prevData) => {
-          return [...prevData, ...result];
+          // check duplicate when new data fecthed
+          const uniqueIds = new Set(prevData.map((item) => item.id));
+          const checkedRes = result.filter((item: DataType) => {return !uniqueIds.has(item.id)});
+          return [...prevData, ...checkedRes];
         });
       }
       else {

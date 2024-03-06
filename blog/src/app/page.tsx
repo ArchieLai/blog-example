@@ -3,7 +3,7 @@ import Card from "@/component/card";
 import { useContext, useEffect, useState, useRef } from "react";
 import { DataContext } from '../component/dataContext';
 import { DataContextType } from "@/types/data";
-import Create from "@/component/create";
+import Edit from "@/component/edit";
 
 const Home = () => {
   const {data, setPage, code, setCode, isLast}: DataContextType = useContext(DataContext);
@@ -43,7 +43,7 @@ const Home = () => {
 
   return (
     <main className="flex flex-col items-center gap-[20px] mt-10 mb-10">
-      {code && <Create />}
+      {code && <Edit title={''} body={''} id={''} isCreate={true} />}
       {sortedData.map((item) => {
         if (item.id != undefined){
           return(
