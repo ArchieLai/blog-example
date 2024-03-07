@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const url = new URL(window.location.href);
     const myCode = url.searchParams.get('code');
-    if (myCode !== null) {
+    if (myCode !== null && myCode !== undefined) {
       setCode(myCode);
     }
   }, [code]);
