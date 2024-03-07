@@ -8,8 +8,6 @@ npm install
 ```
 ### 2. Run the development server
 ```bash
-cd blog
-
 npm run dev
 # or
 next dev
@@ -45,7 +43,7 @@ npx next start
 
 ### Project Structure
 ```
-└─ blog/
+root/
    ├── src/
    │   ├── app/
    │   │   ├── post/[id]/
