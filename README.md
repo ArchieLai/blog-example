@@ -75,3 +75,11 @@ root/
 
 ### Caching Strategies
 * [Project note on caching](https://hackmd.io/FvY8WJ3MQlm_ow0QWvvX2Q?view#3%E8%B3%87%E6%96%99%E5%8F%96%E5%BE%97%E5%8F%8A%E5%BF%AB%E5%8F%96)
+
+* Diagram of token caching
+   * Access token is cached on the server side for safety concern.
+![token cache diagram](/src/public/image/tokenCache.jpg)
+
+* Diagram of data caching
+   * Data is cached on the client side (context) for the ease of rendering dynamic routes, also cached on the server side by default.
+![data cache diagram](/src/public/image/dataCache.jpg)
