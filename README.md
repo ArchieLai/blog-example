@@ -1,5 +1,6 @@
 # Introduction
-[Project requirement](https://drive.google.com/file/d/1x5l_hC5c26MauhTpACwGaa2nBUDo5uad/view)
+* [Project requirement](https://drive.google.com/file/d/1x5l_hC5c26MauhTpACwGaa2nBUDo5uad/view)
+* Deployed at: https://blog-example-sooty.vercel.app/
 
 ## Getting Started
 ### 1. Installations
@@ -53,7 +54,8 @@ root/
    │   │   ├── globals.css
    │   │   ├── layout.tsx
    │   │   └── page.tsx
-   │   ├── component/  
+   │   ├── component/ 
+   │   ├── public/  
    │   ├── service/  
    │   └── types/
    ├── next.config.mjs
@@ -62,6 +64,7 @@ root/
 ```
 #### Directory Descriptions
 * component：Reusable ui components.
+* public: Static assets including images.
 * service：API functions.
 * types: TypeScript types and interfaces.
 #### Configurations
